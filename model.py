@@ -1,10 +1,15 @@
-from random import randint
+/from random import randint
 
 class Car(object):
     pass
 
 class Wheel(object):
-    pass
+    def __init__(self):
+        self.orientation = randint(0,360)
+
+    def rotate(self, revolutions):
+        degreesOfRotation = 360 * revolutions
+        self.orientation = (self.orientation + degreesOfRotation) %360
 
 class Engine(object):
     pass
@@ -13,4 +18,17 @@ class Gearbox(object):
     pass
 
 class Tank(object):
-    pass
+
+    def __init__(self):
+        self.capacity = 100
+        self.contenst = 100
+
+
+    def remove(self,amount):
+        self.contents -= amount
+        if self.contenst<0:
+            self.comtenst = 0
+
+
+    def refuel(self):
+        self.contenst = self.capacity
