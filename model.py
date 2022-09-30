@@ -1,4 +1,4 @@
-/from random import randint
+from random import randint
 
 class Car(object):
     pass
@@ -15,19 +15,37 @@ class Engine(object):
     pass
 
 class Gearbox(object):
-    pass
+    def __init__(self):
+        self.wheels = {}
+        for newWheel in ['frontLeft', 'frontRight', 'rearLeft', 'rearRight']:
+          self.wheels[newWheel]  = Wheel()
+        self.currentGear = 0
+        self.gears=[0, 0.0, 1, 1.4, 2.2, 3.0]
+        self.clutchEngaged = false
+
+    def shiftUp(self):
+        if self.currentGear < len(self.gears) - 1 and not self.clutchEngaged:
+            self.currentGear += 1
+
+
+    def shiftDown(self):
+        if self.currentGear > 0 and not self.clutchEngaged:
+            self.currentGear -= 1
+
+
+
 
 class Tank(object):
 
     def __init__(self):
         self.capacity = 100
-        self.contenst = 100
+        self.contents = 100
 
 
     def remove(self,amount):
         self.contents -= amount
-        if self.contenst<0:
-            self.comtenst = 0
+        if self.contents<0:
+            self.contents = 0
 
 
     def refuel(self):
